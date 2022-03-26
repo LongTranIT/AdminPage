@@ -8,7 +8,7 @@ class DiaDiemController {
     
     // [GET] /diadiem/:slug
     detail(req, res) {
-        res.render('diaDiem/diaDiemDetail')
+        res.render('diaDiem/diaDiemdetail')
     }
     // [GET] /diadiem/addForm
     addForm(req, res) {
