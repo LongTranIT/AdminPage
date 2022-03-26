@@ -1,0 +1,110 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản Lý/</span> Lịch Trình</h4>
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Thông Tin Cho Lịch Trình</h5>
+                      <small class="text-muted float-end">Thêm</small>
+                    </div>
+                    <div class="card-body">
+                      <form action="get" method="/tour">
+
+                        <div class="mb-3">
+                          <label
+                            class="form-label"
+                            for="dia-diem"
+                            >Địa Điểm</label
+                          >
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"
+                              > <i class="bx bxs-location-plus"></i></span>
+                            <select name="id_dia_diem" id="dia-diem" class="form-select" required>
+                              <option value="">---Chọn Địa Điểm---</option>
+                              <option value="Núi">Núi Phú Sĩ</option>
+                              <option value="Hokkaido">Hokkaido</option>
+                              <option value="Akihabara">Akihabara</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label
+                            class="form-label"
+                            for="ngay_o"
+                            >Thời Gian Dừng Chân</label
+                          >
+                          <div class="input-group input-group-merge">
+                            <span
+                              id="basic-icon-default-company2"
+                              class="input-group-text"
+                              ><i class="bx bx-time"></i
+                            ></span>
+                            <input
+                              name="ngay_o"
+                              class="form-control"
+                              type="number"
+                              value="3"
+                              id="ngay_o"
+                            />
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="dich-vu">Dịch Vụ</label>
+                          <div class="input-group input-group-merge">
+                            <span  class="input-group-text"
+                              ><i class="bx bx-hotel"></i
+                            ></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Khách Sạn"
+                              id="dich-vu"
+                              name="dich_vu"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                          <label class="form-label" for="su-co">Sự Cố</label>
+                          <div class="input-group input-group-merge">
+                            <span id="su-co2" class="input-group-text"
+                              ><i class="bx bxs-radiation"></i></span>
+                            <textarea
+                              name="su_co"
+                              id="su-co"
+                              class="form-control"
+                              placeholder="Thiên tai, chiến tranh, dịch bệnh,..."
+                              aria-label="Thiên tai, chiến tranh, dịch bệnh,..."
+                              aria-describedby="su-co2"
+                            ></textarea>
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label
+                            class="form-label"
+                            for="defaultSelect"
+                            >Trạng Thái</label
+                          >
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"
+                              > <i class="bx bx-edit"></i></span>
+                            <select name="trang_thai" id="defaultSelect" class="form-select" required>
+                              <option value="">---Chọn Trạng Thái---</option>
+                              <option value="1">Chưa Hoàn Thành</option>
+                              <option value="2">Hoàn Thành</option>
+                              <option value="3">Hủy Bỏ</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Thêm Lịch Trình</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
