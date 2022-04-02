@@ -9,12 +9,14 @@
   </div>
   <!-- Row -->
   <div class="row mb-5">
+
+    {{#each diadiems}}
     <!-- Card-item -->
     <div class="col-md-6 col-lg-4 mb-3">
       <div class="card h-100">
-        <a href="/diadiem/:slug"><img
+        <a href="/diadiem/{{this.slug}}"><img
             class="card-img-top"
-            src="https://tourhot24h.vn/wp-content/uploads/2019/09/du-lich-nui-phu-si-nhat-ban-1.jpg"
+            src="https://tour-api-dev.herokuapp.com/{{this.hinh}}"
             alt="Card image cap"
             style="
                           width: 100%;
@@ -24,54 +26,9 @@
           />
         </a>
         <div class="card-body">
-          <h5 class="card-title">Núi Phú Sĩ</h5>
+          <h5 class="card-title">{{this.ten}}</h5>
           <p class="card-text block-ellipsis">
-            Sừng sững vắt ngang qua hai tỉnh Shizuoka và Yamanashi, tọa lạc ở độ
-            cao 3.500 m, núi Phú Sĩ hiện ra hùng vĩ và tráng lệ, được biết đến
-            rộng rãi ở cả trong và ngoài nước Nhật Bản. Núi Phú Sĩ được cho là
-            được hình thành trên đỉnh núi “Phú Sĩ cổ” khoảng mười nghìn năm
-            trước, là nơi giao nhau của mảng lục địa Á Âu, mảng lục địa Okhotsk
-            và lục địa Philipin. Trên đỉnh cao nhất của núi Fuji là miệng núi
-            lửa có đường kính hơn 50 mét và sâu khoảng 250 mét. Núi Phú Sĩ (hay
-            còn gọi là núi Fuji) được hình thành bởi trận động đất vào năm
-            286TCN. Vụ phun trào đầu tiên ở ngọn núi xảy ra vào khoảng 600.000
-            năm về trước, còn vụ phun trào mới nhất là vào năm 1708.
-          </p>
-          <div style="display: flex; justify-content: space-around">
-            <a href="diadiem/updateForm" class="btn btn-outline-primary">Chỉnh
-              Sửa</a>
-            <a
-              href="javascript:void(0)"
-              class="btn btn-outline-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#modalToggleTour3"
-            >Xóa</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4 mb-3">
-      <div class="card h-100">
-        <a href="/diadiem/slug"><img
-            class="card-img-top"
-            src="https://sugoi.vn/wp-content/uploads/2020/12/header-mt-fujigggggggg-MTFUJI1219.jpg"
-            alt="Card image cap"
-            style="
-                          width: 100%;
-                          height: 280px;
-                          background-size: cover;
-                        "
-          />
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">Núi Phú Sĩ</h5>
-          <p class="card-text block-ellipsis">
-            Chính do dung nham phun trào đã kết dính 2 bên sườn núi, tạo thành
-            hình chóp nón mà du khách nhìn thấy ngày nay. Xung quanh núi Phú sĩ
-            có nhiều đỉnh núi khác như: Osahidake, Izudake, Jojudake,
-            Komagatake, Mushimatake, Kengamme, Hukusandake và Kukushidake. Với
-            mệnh danh là ngọn núi cao nhất Nhật Bản, chắc chắn đây sẽ là địa
-            điểm mà mọi người không nên bỏ qua đấy nhé.
+            {{this.mo_ta}}
           </p>
           <div style="display: flex; justify-content: space-around">
             <a href="diadiem/updateForm" class="btn btn-outline-primary">Chỉnh
@@ -87,6 +44,7 @@
       </div>
     </div>
     <!-- End-card-item -->
+    {{/each}}
   </div>
 </div>
 <!-- Modal Delete-->

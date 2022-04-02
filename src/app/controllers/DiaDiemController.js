@@ -1,14 +1,30 @@
-
+const axios = require('axios');
 
 class DiaDiemController {
     // [GET] /diadiem
     show(req, res) {
-        res.render('diaDiem/diaDiemCard');
+        // res.render('diaDiem/diaDiemCard');
+        axios
+            .get("https://tour-api-dev.herokuapp.com/diadiem")
+            .then(data => {
+                // handle success
+                res.render('diaDiem/diaDiemCard', { diadiems:data.data })
+
+            })
+            .catch(err => console.log(err))
     }
-    
+
     // [GET] /diadiem/:slug
     detail(req, res) {
-        res.render('diaDiem/diaDiemdetail')
+        axios
+            .get("https://tour-api-dev.herokuapp.com/diadiem/"+req.params.slug)
+            .then(data => {
+                // handle success
+                data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                res.render('diaDiem/diaDiemdetail', { diadiem:data.data })
+
+            })
+            .catch(err => console.log(err))
     }
     // [GET] /diadiem/addForm
     addForm(req, res) {
