@@ -1,20 +1,27 @@
-const axios = require('axios');
+const axios = require("axios");
+require('dotenv/config');
+const apiLink = process.env.RESTFULL_API;
 class TourController {
   // [GET] /tour
   show(req, res) {
-    res.render("tours/tourCard");
+    axios
+      .get(apiLink+"tour")
+      .then(data => {
+        // handle success
+        const tours=data.data;
+        res.render('tours/tourCard',{apiLink,tours})
+      })
+      .catch(err =>console.log(err))
   }
 
   // [GET] /tour/:slug
   detail(req, res) {
-    res.render('tours/tourDetail');
     // axios
-    //   .get("https://tour-api-dev.herokuapp.com/tour")
+    //   .get(apiLink+"/tour")
     //   .then(data => {
     //     // handle success
     //     console.log(data.data);
     //     res.render('tours/tourDetail',{data})
-
     //   })
     //   .catch(err =>console.log(err))
   }

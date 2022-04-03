@@ -1,16 +1,15 @@
 const axios = require('axios');
 require('dotenv/config')
-
+const apiLink = process.env.RESTFULL_API;
 class DiaDiemController {
+
     // [GET] /diadiem
     show(req, res) {
-        // res.render('diaDiem/diaDiemCard');
-        const apiLink=process.env.RESTFULL_API;
         axios
-            .get(apiLink+"diadiem")
+            .get(apiLink + "diadiem")
             .then(data => {
                 // handle success
-                res.render('diaDiem/diaDiemCard', { apiLink,diadiems:data.data })
+                res.render('diaDiem/diaDiemCard', { apiLink, diadiems: data.data })
 
             })
             .catch(err => console.log(err))
@@ -19,11 +18,11 @@ class DiaDiemController {
     // [GET] /diadiem/:slug
     detail(req, res) {
         axios
-            .get("https://tour-api-dev.herokuapp.com/diadiem/"+req.params.slug)
+            .get("https://tour-api-dev.herokuapp.com/diadiem/" + req.params.slug)
             .then(data => {
                 // handle success
                 data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                res.render('diaDiem/diaDiemdetail', { diadiem:data.data })
+                res.render('diaDiem/diaDiemdetail', { diadiem: data.data })
 
             })
             .catch(err => console.log(err))
