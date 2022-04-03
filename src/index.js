@@ -13,6 +13,7 @@ const handlebars = require('express-handlebars');
 //handlebar
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
+    helpers: require('./helpers/handlebars')
 }));
 
 app.set('view engine', 'hbs');

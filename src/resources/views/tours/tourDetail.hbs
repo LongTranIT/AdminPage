@@ -4,20 +4,16 @@
     Tour
   </h4>
   <div style="margin: -16px 0">
-    <a
-      class="btn rounded-pill btn-outline-primary"
-      href="/tour/addLichTrinhForm"
-    >
+    <a class="btn rounded-pill btn-outline-primary" href="/tour/addLichTrinhForm">
       Thêm Lịch Trình
     </a>
-    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal"
-            data-bs-target="#modalToggleTour3">
+    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalToggleTour3">
       Xóa Tour này
     </button>
   </div>
   <br />
   <div style="width: 1100px; display: flex; justify-content: center">
-    <h1 class="text-primary">Núi Phú Sĩ - Hokkaido - Akihabara</h1>
+    <h1 class="text-primary">{{tour.ten}}</h1>
   </div>
   <div class="row mb-5">
     <!-- Card-item -->
@@ -27,23 +23,23 @@
         <div class="card-body">
           <p class="card-text">
             <i class="bx bxs-plane-take-off"></i>
-            12/04/2022
+            {{tour.khoi_hanh}}
           </p>
           <p class="card-text">
             <i class="bx bx-time"></i>
-            7 ngày
+            {{tour.so_ngay}} ngày
           </p>
           <p class="card-text">
             <i class="bx bx-chair"></i>
-            15/20
+            {{tour.khach_hang.length}}/{{tour.so_cho}}
           </p>
           <p class="card-text">
             <i class="bx bx-user-voice"></i>
-            <a href="#">Long Tran</a>
+            <a href="#">{{tour.nguoi_hd.ho_ten}}</a>
           </p>
           <p class="card-text text-primary">
             <i class="bx bx-purchase-tag-alt"></i>
-            10.000.000d VND
+            {{tour.gia}} VND
           </p>
           <a href="/tour/updateInfoForm" class="btn btn-primary">Chỉnh Sửa</a>
         </div>
@@ -51,83 +47,61 @@
     </div>
     <!-- /Card-item -->
 
+    {{#each tour.lich_trinh}}
+    {{#with this as |lichtrinh|}}
     <!-- Card-item LichTrinh -->
     <div class="col-md-6 col-lg-4 mb-3">
       <div class="card">
         <div class="card-header text-danger">
-          Lịch Trình Địa Điểm 1
+          Lịch Trình Địa Điểm {{sum @index 1}}
         </div>
         <div class="card-body">
           <p class="card-text">
             <i class="bx bxs-location-plus"></i>
-            <a href="#">Núi Phú Sĩ</a>
+            <a href="#">{{lichtrinh.id_dia_diem.ten}}</a>
           </p>
           <p class="card-text">
             <i class="bx bx-time"></i>
-            2 ngày
+            {{lichtrinh.ngay_o}} ngày
           </p>
           <p class="card-text">
             <i class="bx bx-hotel"></i>
-            Khách sạn 5 sao
+            {{lichtrinh.dich_vu}}
           </p>
           <p class="card-text">
             <i class="bx bxs-radiation"></i>
-            Sự cố: Không có
+            Sự cố: {{lich_trinh.su_co}}
           </p>
           <p class="card-text text-info">
             <i class="bx bx-edit"></i>
-            Chưa hoàn thành
+            {{lichtrinh.trang_thai}}
           </p>
 
           <a href="/tour/updateLichTrinhForm" class="btn btn-primary">Chỉnh Sửa</a>
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#modalToggle"
-            style="margin-left: 20px"
-          >
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalToggle"
+            style="margin-left: 20px">
             Xóa
           </button>
 
           <!-- Modal 1-->
-          <div
-            class="modal fade"
-            id="modalToggle"
-            aria-labelledby="modalToggleLabel"
-            tabindex="-1"
-            style="display: none"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1"
+            style="display: none" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="modalToggleLabel">
                     Xác Nhận Xóa
                   </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   Bạn có chắc chắn muốn xóa không?
                 </div>
                 <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-outline-info"
-                    data-bs-dismiss="modal"
-                  >
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button
-                    class="btn btn-danger"
-                    data-bs-toggle="modal"
-                    data-bs-dismiss="modal"
-                  >
+                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
                     Xóa
                   </button>
                 </div>
@@ -138,182 +112,8 @@
       </div>
     </div>
     <!-- /Card-item LichTrinh-->
-
-    <!-- Card-item LichTrinh -->
-    <div class="col-md-6 col-lg-4 mb-3">
-      <div class="card">
-        <div class="card-header text-danger">
-          Lịch Trình Địa Điểm 2
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <i class="bx bxs-location-plus"></i>
-            <a href="#">Hokkado</a>
-          </p>
-          <p class="card-text">
-            <i class="bx bx-time"></i>
-            2 ngày
-          </p>
-          <p class="card-text">
-            <i class="bx bx-hotel"></i>
-            Khách sạn 5 sao
-          </p>
-          <p class="card-text">
-            <i class="bx bxs-radiation"></i>
-            Sự cố: Không có
-          </p>
-          <p class="card-text text-info">
-            <i class="bx bx-edit"></i>
-            Chưa hoàn thành
-          </p>
-
-          <a href="/tour/updateLichTrinhForm" class="btn btn-primary">Chỉnh Sửa</a>
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#modalToggleDiaDiem1"
-            style="margin-left: 20px"
-          >
-            Xóa
-          </button>
-
-          <!-- Modal 1-->
-          <div
-            class="modal fade"
-            id="modalToggleDiaDiem1"
-            aria-labelledby="modalToggleLabel"
-            tabindex="-1"
-            style="display: none"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalToggleLabel">
-                    Xác Nhận Xóa
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  Bạn có chắc chắn muốn xóa địa điểm 1 không?
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-outline-info"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    class="btn btn-danger"
-                    data-bs-toggle="modal"
-                    data-bs-dismiss="modal"
-                  >
-                    Xóa
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Card-item LichTrinh-->
-
-    <!-- Card-item LichTrinh -->
-    <div class="col-md-6 col-lg-4 mb-3">
-      <div class="card">
-        <div class="card-header text-danger">
-          Lịch Trình Địa Điểm 3
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <i class="bx bxs-location-plus"></i>
-            <a href="#">Akihabara</a>
-          </p>
-          <p class="card-text">
-            <i class="bx bx-time"></i>
-            2 ngày
-          </p>
-          <p class="card-text">
-            <i class="bx bx-hotel"></i>
-            Khách sạn 5 sao
-          </p>
-          <p class="card-text">
-            <i class="bx bxs-radiation"></i>
-            Sự cố: Không có
-          </p>
-          <p class="card-text text-info">
-            <i class="bx bx-edit"></i>
-            Chưa hoàn thành
-          </p>
-
-          <a href="/tour/updateLichTrinhForm" class="btn btn-primary">Chỉnh Sửa</a>
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#modalToggleDiaDiem3"
-            style="margin-left: 20px"
-          >
-            Xóa
-          </button>
-
-          <!-- Modal 1-->
-          <div
-            class="modal fade"
-            id="modalToggleDiaDiem3"
-            aria-labelledby="modalToggleLabel"
-            tabindex="-1"
-            style="display: none"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalToggleLabel">
-                    Xác Nhận Xóa
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  Bạn có chắc chắn muốn xóa địa điểm Akihabara không?
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-outline-info"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    class="btn btn-danger"
-                    data-bs-toggle="modal"
-                    data-bs-dismiss="modal"
-                  >
-                    Xóa
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Card-item LichTrinh-->
+    {{/with}}
+    {{/each}}
 
     <div class="col-md-4 col-sm-12">
       <div class="card overflow-hidden mb-4" style="height: 330px">
@@ -322,38 +122,16 @@
           Danh Sách khánh hàng tham gia
         </h5>
         <div class="card-body ps ps--active-y" id="vertical-example">
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>2: <a href="#">Tran Phi Long </a></p>
-          <p>3: <a href="#">Tran Phi Long </a></p>
-          <p>4: <a href="#">Tran Phi Long </a></p>
-          <p>5: <a href="#">Tran Phi Long </a></p>
-          <p>6: <a href="#">Tran Phi Long </a></p>
-          <p>7: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
-          <p>1: <a href="#">Tran Phi Long </a></p>
+
+          {{#each tour.khach_hang}}
+          <p>{{sum @index 1}}: <a href="#">{{this.ho_ten}} </a></p>
+          {{/each}}
+
           <div class="ps__rail-x" style="left: 0px; bottom: 0px">
-            <div
-              class="ps__thumb-x"
-              tabindex="0"
-              style="left: 0px; width: 0px"
-            ></div>
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px"></div>
           </div>
           <div class="ps__rail-y" style="top: 0px; height: 232px; right: 0px">
-            <div
-              class="ps__thumb-y"
-              tabindex="0"
-              style="top: 0px; height: 40px"
-            ></div>
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 40px"></div>
           </div>
         </div>
       </div>
@@ -362,43 +140,24 @@
 </div>
 
 <!-- Modal Delete-->
-<div
-  class="modal fade"
-  id="modalToggleTour3"
-  aria-labelledby="modalToggleLabel"
-  tabindex="-1"
-  style="display: none"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalToggleTour3" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalToggleLabel">
           Xác Nhận Xóa
         </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Bạn có chắc chắn muốn xóa tour này không?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-info"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
           Close
         </button>
-        <button
-          class="btn btn-danger"
-          data-bs-toggle="modal"
-          data-bs-dismiss="modal"
-        >
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
           Xóa
         </button>
       </div>

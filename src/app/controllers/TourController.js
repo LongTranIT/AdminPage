@@ -16,14 +16,13 @@ class TourController {
 
   // [GET] /tour/:slug
   detail(req, res) {
-    // axios
-    //   .get(apiLink+"/tour")
-    //   .then(data => {
-    //     // handle success
-    //     console.log(data.data);
-    //     res.render('tours/tourDetail',{data})
-    //   })
-    //   .catch(err =>console.log(err))
+    axios
+      .get(apiLink+"tour/"+req.params.slug)
+      .then(data => {
+        // handle success
+        res.render('tours/tourDetail',{tour:data.data})
+      })
+      .catch(err =>res.json(err))
   }
 
   // [GET] /tour/addTourForm
