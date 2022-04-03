@@ -1,14 +1,16 @@
 const axios = require('axios');
+require('dotenv/config')
 
 class DiaDiemController {
     // [GET] /diadiem
     show(req, res) {
         // res.render('diaDiem/diaDiemCard');
+        const apiLink=process.env.RESTFULL_API;
         axios
-            .get("https://tour-api-dev.herokuapp.com/diadiem")
+            .get(apiLink+"diadiem")
             .then(data => {
                 // handle success
-                res.render('diaDiem/diaDiemCard', { diadiems:data.data })
+                res.render('diaDiem/diaDiemCard', { apiLink,diadiems:data.data })
 
             })
             .catch(err => console.log(err))
