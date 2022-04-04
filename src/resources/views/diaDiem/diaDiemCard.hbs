@@ -5,7 +5,7 @@
   </h4>
   <div style="padding: 0 0 20px 0">
     <a class="btn rounded-pill btn-primary" href="/diadiem/addForm">Thêm Địa
-      Điểm Mới</a>
+      Điểm</a>
   </div>
   <!-- Row -->
   <div class="row mb-5">
@@ -37,7 +37,9 @@
               href="javascript:void(0)"
               class="btn btn-outline-danger"
               data-bs-toggle="modal"
-              data-bs-target="#modalToggleTour3"
+              data-bs-target="#delete-diadiem-modal"
+              data-id="{{this._id}}"
+              data-name="{{this.ten}}"
             >Xóa</a>
           </div>
         </div>
@@ -49,8 +51,8 @@
 </div>
 <!-- Modal Delete-->
 <div
-  class="modal fade"
-  id="modalToggleTour3"
+  class="modal fade modal-delete"
+  id="delete-diadiem-modal"
   aria-labelledby="modalToggleLabel"
   tabindex="-1"
   style="display: none"
@@ -81,6 +83,7 @@
           Close
         </button>
         <button
+          id="btn-delete"
           class="btn btn-danger"
           data-bs-toggle="modal"
           data-bs-dismiss="modal"
@@ -91,3 +94,7 @@
     </div>
   </div>
 </div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>
