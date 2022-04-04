@@ -41,7 +41,7 @@
             <i class="bx bx-purchase-tag-alt"></i>
             {{tour.gia}} VND
           </p>
-          <a href="/tour/updateInfoForm" class="btn btn-primary">Chỉnh Sửa</a>
+          <a href="/tour/updateInfoForm?_slug={{tour.slug}}" class="btn btn-primary">Chỉnh Sửa</a>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
             {{lichtrinh.trang_thai}}
           </p>
 
-          <a href="/tour/updateLichTrinhForm" class="btn btn-primary">Chỉnh Sửa</a>
+          <a href="/tour/updateLichTrinhForm?_id={{lichtrinh._id}}" class="btn btn-primary">Chỉnh Sửa</a>
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalToggle"
             style="margin-left: 20px">
             Xóa

@@ -5,24 +5,24 @@ class TourController {
   // [GET] /tour
   show(req, res) {
     axios
-      .get(apiLink+"tour")
+      .get(apiLink + "tour")
       .then(data => {
         // handle success
-        const tours=data.data;
-        res.render('tours/tourCard',{apiLink,tours})
+        const tours = data.data;
+        res.render('tours/tourCard', { apiLink, tours })
       })
-      .catch(err =>console.log(err))
+      .catch(err => console.log(err))
   }
 
   // [GET] /tour/:slug
   detail(req, res) {
     axios
-      .get(apiLink+"tour/"+req.params.slug)
+      .get(apiLink + "tour/" + req.params.slug)
       .then(data => {
         // handle success
-        res.render('tours/tourDetail',{tour:data.data})
+        res.render('tours/tourDetail', { tour: data.data })
       })
-      .catch(err =>res.json(err))
+      .catch(err => res.json(err))
   }
 
   // [GET] /tour/addTourForm
@@ -33,13 +33,32 @@ class TourController {
   addLichTrinhForm(req, res) {
     res.render("tours/addLichTrinhForm");
   }
-  // [GET] /tour/updateInfoForm
+  // [GET] /tour/updateInfoForm?_slug
   updateInfoForm(req, res) {
-    res.render("tours/updateInfoForm");
+    Promise.all([
+      axios
+        .get(apiLink + "tour/" + req.query['_slug']),
+      axios
+        .get(apiLink + "huongdanvien")
+    ])
+      .then(([data, huongdanviens]) => {
+        res.render('tours/updateInfoForm', { tour: data.data, huongdanviens: huongdanviens.data })
+      })
+      .catch(err => res.json(err))
+
   }
-  // [GET] /tour/updateLichTrinhForm
+  // [GET] /tour/updateLichTrinhForm?_id
   updateLichTrinhForm(req, res) {
-    res.render("tours/updateLichTrinhForm");
+    Promise.all([
+      axios
+        .get(apiLink + "lichtrinh/" + req.query['_id']),
+      axios
+        .get(apiLink + "diadiem")
+    ])
+      .then(([data, diadiems]) => {
+        res.render('tours/updateLichTrinhForm', { lichtrinh: data.data, diadiems: diadiems.data })
+      })
+      .catch(err => res.json(err))
   }
 
   // // [PUT] /tour/:id

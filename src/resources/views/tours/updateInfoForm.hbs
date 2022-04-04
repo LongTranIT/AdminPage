@@ -11,7 +11,7 @@
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
-          <h5 class="mb-0">Núi Phú Sĩ - Hokkado - Akihabara</h5>
+          <h5 class="mb-0">{{tour.ten}}</h5>
           <small class="text-muted float-end">Chỉnh Sửa</small>
         </div>
         <div class="card-body">
@@ -27,6 +27,7 @@
                   class="form-control"
                   placeholder="Núi Phú Sĩ - Hokkado - Akihabara"
                   aria-describedby="basic-addon11"
+                  value="{{tour.ten}}"
                 />
               </div>
             </div>
@@ -42,7 +43,7 @@
                   name="khoi_hanh"
                   class="form-control"
                   type="date"
-                  value="2021-06-18"
+                  value="{{tour.khoi_hanh}}"
                   id="html5-date-input"
                 />
               </div>
@@ -59,7 +60,7 @@
                   name="so_ngay"
                   class="form-control"
                   type="number"
-                  value="10"
+                  value="{{tour.so_ngay}}"
                   id="html5-number-input"
                 />
               </div>
@@ -75,7 +76,7 @@
                   name="so_cho"
                   class="form-control"
                   type="number"
-                  value="18"
+                  value="{{tour.so_cho}}"
                   id="html5-number-input"
                 />
               </div>
@@ -87,10 +88,10 @@
                     class="bx bx-user-voice"
                   ></i></span>
                 <select name="nguoi_hd" id="defaultSelect" class="form-select">
-                  <option>Chọn Người Hướng Dẫn</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="{{tour.nguoi_hd._id}}" hidden>{{tour.nguoi_hd.ho_ten}}</option>
+                  {{#each huongdanviens}}
+                    <option value="{{this._id}}">{{this.ho_ten}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
@@ -107,6 +108,7 @@
                   class="form-control"
                   placeholder="10000000"
                   aria-label="Amount (to the nearest dollar)"
+                  value="{{tour.gia}}"
                 />
                 <span class="input-group-text">.00</span>
               </div>

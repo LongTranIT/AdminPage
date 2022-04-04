@@ -9,7 +9,7 @@
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
-          <h5 class="mb-0">Núi Phú Sĩ</h5>
+          <h5 class="mb-0">{{lichtrinh.id_dia_diem.ten}}</h5>
           <small class="text-muted float-end">Chỉnh Sửa</small>
         </div>
         <div class="card-body">
@@ -26,10 +26,10 @@
                   class="form-select"
                   required
                 >
-                  <option value="">---Chọn Địa Điểm---</option>
-                  <option value="Núi">Núi Phú Sĩ</option>
-                  <option value="Hokkaido">Hokkaido</option>
-                  <option value="Akihabara">Akihabara</option>
+                  <option value="{{lichtrinh.id_dia_diem._id}}" hidden>{{lichtrinh.id_dia_diem.ten}}</option>
+                  {{#each diadiems}}
+                  <option value="{{this._id}}">{{this.ten}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
@@ -45,7 +45,7 @@
                   name="ngay_o"
                   class="form-control"
                   type="number"
-                  value="3"
+                  value="{{lichtrinh.ngay_o}}"
                   id="ngay_o"
                 />
               </div>
@@ -62,6 +62,7 @@
                   placeholder="Khách Sạn"
                   id="dich-vu"
                   name="dich_vu"
+                  value="{{lichtrinh.dich_vu}}"
                 />
               </div>
             </div>
@@ -79,7 +80,7 @@
                   placeholder="Thiên tai, chiến tranh, dịch bệnh,..."
                   aria-label="Thiên tai, chiến tranh, dịch bệnh,..."
                   aria-describedby="su-co2"
-                ></textarea>
+                >{{lichtrinh.su_co}}</textarea>
               </div>
             </div>
 
@@ -94,10 +95,10 @@
                   class="form-select"
                   required
                 >
-                  <option value="">---Chọn Trạng Thái---</option>
-                  <option value="1">Chưa Hoàn Thành</option>
-                  <option value="2">Hoàn Thành</option>
-                  <option value="3">Hủy Bỏ</option>
+                  <option value="{{lichtrinh.trang_thai}}" hidden>{{lichtrinh.trang_thai}}</option>
+                  <option value="Chưa Hoàn Thành">Chưa Hoàn Thành</option>
+                  <option value="Hoàn Thành">Hoàn Thành</option>
+                  <option value="Hủy Bỏ">Hủy Bỏ</option>
                 </select>
               </div>
             </div>
