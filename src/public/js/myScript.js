@@ -8,10 +8,10 @@ function setNavigation() {
 
     $("li.menu-item a").each(function () {
         var href = $(this).attr('href');
-        if (path.substring(0, href.length) === href&&href.length>1) {
+        if (path.substring(0, href.length) === href && href.length > 1) {
             $(this).closest('li').addClass('active');
         }
-        if(path===''){
+        if (path === '') {
             $("#dashboard-menu-item").addClass('active');
         }
     });
@@ -31,15 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
-        modal.find('.modal-body').text('Bạn có chắc chắn muốn xóa ' + name+' không?');
+        modal.find('.modal-body').text('Bạn có chắc chắn muốn xóa ' + name + ' không?');
 
     });
 
     //Handle click delete button
-    btnDelete.onclick = () => {
-        deleteForm.action = location.href+'/' + Id + '?_method=DELETE';
-        deleteForm.submit();
+    if (btnDelete !== null) {
+        btnDelete.onclick = () => {
+            deleteForm.action = location.href + '/' + Id + '?_method=DELETE';
+            deleteForm.submit();
+        }
     }
-    
-    
+
 });

@@ -22,7 +22,7 @@ class DiaDiemController {
             .then(data => {
                 // handle success
                 data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                res.render('diaDiem/diaDiemdetail', { diadiem: data.data })
+                res.render('diaDiem/diaDiemdetail', {apiLink, diadiem: data.data })
 
             })
             .catch(err => console.log(err))
