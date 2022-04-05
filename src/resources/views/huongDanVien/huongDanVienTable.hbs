@@ -22,13 +22,14 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    {{#each huongdanviens}}
                     <tr>
                         <td>
                             <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <strong>Trần Phi Long</strong>
+                            <strong>{{this.ho_ten}}</strong>
                         </td>
-                        <td>0948918961</td>
-                        <td>tranphilongnvd@gmail.com</td>
+                        <td>{{this.sdt}}</td>
+                        <td>{{this.email}}</td>
                         <td>
                             <span class="badge bg-label-primary me-1">10</span>
                         </td>
@@ -43,65 +44,15 @@
                                             class="bx bx-file-find"></i> Tour Phụ
                                         Trách</a>
 
-                                    <a class="dropdown-item" data-bs-toggle="modal"
-                                        data-bs-target="#modalToggleXoaHDV"><i class="bx bx-trash me-1"></i> Xóa</a>
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete"
+                                        data-id="{{this._id}}" data-name="{{this.ho_ten}}" data-collection="huongdanvien"><i
+                                            class="bx bx-trash me-1"></i> Xóa</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <strong>Trần Phi Long</strong>
-                        </td>
-                        <td>0948918961</td>
-                        <td>tranphilongnvd@gmail.com</td>
-                        <td>
-                            <span class="badge bg-label-primary me-1">10</span>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-file-find"></i>
-                                        Tour Phụ
-                                        Trách</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Xóa</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <strong>Trần Phi Long</strong>
-                        </td>
-                        <td>0948918961</td>
-                        <td>tranphilongnvd@gmail.com</td>
-                        <td>
-                            <span class="badge bg-label-primary me-1">10</span>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-file-find"></i>
-                                        Tour Phụ
-                                        Trách</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Xóa</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    
+                    {{/each}}
+
                 </tbody>
             </table>
         </div>
@@ -153,7 +104,7 @@
 </div>
 
 <!-- Modal Delete-->
-<div class="modal fade" id="modalToggleXoaHDV" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+<div class="modal fade " id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -164,19 +115,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Bạn có chắc chắn muốn xóa huong dan vien nay không?
+                Bạn có chắc chắn muốn xóa địa điểm này không?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
-                    Đóng
+                    Close
                 </button>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
+                <button id="btn-delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
                     Xóa
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>
 
 <!-- Modal Add Form -->
 <div class="modal fade" id="addFormModal" tabindex="-1" style="display: none" aria-hidden="true">

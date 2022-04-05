@@ -5,7 +5,7 @@ const DiaDiemController=require('../app/controllers/DiaDiemController');
 
 router.get('/',DiaDiemController.show);
 router.get('/addForm',DiaDiemController.addForm);
-router.get('/updateForm',DiaDiemController.updateForm);
+router.get('/updateForm/:slug',DiaDiemController.updateForm);
 router.get('/:slug',DiaDiemController.detail);
 // router.post('/',DiaDiemController.create);
 // router.put('/:id',DiaDiemController.update);

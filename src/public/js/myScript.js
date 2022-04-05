@@ -19,14 +19,14 @@ function setNavigation() {
 
 //Handle Delete
 document.addEventListener('DOMContentLoaded', function () {
-    var Id;
+    var Id, collection;
     var btnDelete = document.querySelector('#btn-delete');
     var deleteForm = document.forms['delete-form'];
 
-    $('.modal-delete').on('show.bs.modal', function (event) {
+    $('#modal-delete').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         Id = button.data('id'); // Extract info from data-* attributes
-        console.log(Id)
+        collection = button.data('collection'); // Extract info from data-* attributes
         var name = button.data('name');
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //Handle click delete button
     if (btnDelete !== null) {
         btnDelete.onclick = () => {
-            deleteForm.action = location.href + '/' + Id + '?_method=DELETE';
+            deleteForm.action = "/"+collection+'/' + Id + '?_method=DELETE';
             deleteForm.submit();
         }
     }

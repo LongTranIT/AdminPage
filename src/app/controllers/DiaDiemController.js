@@ -18,7 +18,7 @@ class DiaDiemController {
     // [GET] /diadiem/:slug
     detail(req, res) {
         axios
-            .get("https://tour-api-dev.herokuapp.com/diadiem/" + req.params.slug)
+            .get(apiLink+'diadiem/' + req.params.slug)
             .then(data => {
                 // handle success
                 data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
@@ -33,7 +33,13 @@ class DiaDiemController {
     }
     // [GET] /diadiem/updateForm
     updateForm(req, res) {
-        res.render('diaDiem/updateForm')
+        axios
+            .get(apiLink+'diadiem/' + req.params.slug)
+            .then(data => {
+                // handle success
+                res.render('diaDiem/updateForm', {apiLink, diadiem: data.data })
+            })
+            .catch(err => console.log(err))
     }
 
     // //[POST] /diadiem

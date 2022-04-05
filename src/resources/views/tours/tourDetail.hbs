@@ -7,7 +7,8 @@
     <a class="btn rounded-pill btn-outline-primary" href="/tour/addLichTrinhForm">
       Thêm Lịch Trình
     </a>
-    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalToggleTour3">
+    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete"
+      data-id="{{tour._id}}" data-name="{{tour.ten}}" data-collection="tour">
       Xóa Tour này
     </button>
   </div>
@@ -78,36 +79,12 @@
           </p>
 
           <a href="/tour/updateLichTrinhForm?_id={{lichtrinh._id}}" class="btn btn-primary">Chỉnh Sửa</a>
-          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalToggle"
-            style="margin-left: 20px">
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete"
+            style="margin-left: 20px" data-id="{{lichtrinh._id}}" data-name=" lịch trình {{lichtrinh.id_dia_diem.ten}}" data-collection="lichtrinh">
             Xóa
           </button>
 
-          <!-- Modal 1-->
-          <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1"
-            style="display: none" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalToggleLabel">
-                    Xác Nhận Xóa
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Bạn có chắc chắn muốn xóa không?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
-                    Xóa
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
@@ -140,7 +117,7 @@
 </div>
 
 <!-- Modal Delete-->
-<div class="modal fade" id="modalToggleTour3" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+<div class="modal fade" id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -157,10 +134,14 @@
         <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
           Close
         </button>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
+        <button id="btn-delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
           Xóa
         </button>
       </div>
     </div>
   </div>
 </div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>

@@ -7,74 +7,53 @@
     <a class="btn rounded-pill btn-outline-primary" href="/diadiem/updateForm">
       Chỉnh Sửa
     </a>
-    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal"
-              data-bs-target="#modalToggleTour3">
+    <button class="btn rounded-pill btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete"
+      data-id="{{diadiem._id}}" data-name="{{diadiem.ten}}" data-collection="diadiem">
       Xóa
     </button>
   </div>
   <div style="width: 1100px; display: flex; justify-content: center">
     <h1 class="text-primary">{{diadiem.ten}}</h1>
   </div>
-  <img
-    src="{{apiLink}}{{diadiem.hinh}}"
-    alt=""
-    style="width: 1100px"
-  />
+  <img src="{{apiLink}}{{diadiem.hinh}}" alt="" style="width: 1100px" />
   <br />
-  <div
-    style="
+  <div style="
                   width: 1100px;
                   margin-top: 20px;
                   line-height: 1.8;
                   font-size: 20px;
-                "
-    class="text-dark replaceNewLine"
-  >
+                " class="text-dark replaceNewLine">
     {{{diadiem.mo_ta}}}
   </div>
 </div>
 
+
 <!-- Modal Delete-->
-<div
-  class="modal fade"
-  id="modalToggleTour3"
-  aria-labelledby="modalToggleLabel"
-  tabindex="-1"
-  style="display: none"
-  aria-hidden="true"
->
+<div class="modal fade" id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalToggleLabel">
           Xác Nhận Xóa
         </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn xóa địa điểm này không?
+        Bạn có chắc chắn muốn xóa tour này không?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-info"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
           Close
         </button>
-        <button
-          class="btn btn-danger"
-          data-bs-toggle="modal"
-          data-bs-dismiss="modal"
-        >
+        <button id="btn-delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
           Xóa
         </button>
       </div>
     </div>
   </div>
 </div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>

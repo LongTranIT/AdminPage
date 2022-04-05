@@ -80,8 +80,8 @@
 
           <div style="display: flex; justify-content: space-around">
             <a href="/tour/{{tour.slug}}" class="btn btn-outline-primary">Chỉnh Sửa</a>
-            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalToggleTour3"
-              data-id="{{tour._id}}" data-name="{{tour.ten}}">Xóa</button>
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete"
+              data-id="{{tour._id}}" data-name="{{tour.ten}}" data-collection="tour"> Xóa</button>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
     {{/with}}
     {{/each}}
     <!-- Modal Delete-->
-    <div class="modal fade modal-delete" id="modalToggleTour3" aria-labelledby="modalToggleLabel" tabindex="-1"
+    <div class="modal fade " id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1"
       style="display: none" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

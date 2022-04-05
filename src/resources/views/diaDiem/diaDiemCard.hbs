@@ -31,15 +31,16 @@
             {{this.mo_ta}}
           </p>
           <div style="display: flex; justify-content: space-around">
-            <a href="diadiem/updateForm" class="btn btn-outline-primary">Chỉnh
+            <a href="diadiem/updateForm/{{this.slug}}" class="btn btn-outline-primary">Chỉnh
               Sửa</a>
             <a
               href="javascript:void(0)"
               class="btn btn-outline-danger"
               data-bs-toggle="modal"
-              data-bs-target="#delete-diadiem-modal"
+              data-bs-target="#modal-delete"
               data-id="{{this._id}}"
               data-name="{{this.ten}}"
+              data-collection="diadiem"
             >Xóa</a>
           </div>
         </div>
@@ -51,8 +52,8 @@
 </div>
 <!-- Modal Delete-->
 <div
-  class="modal fade modal-delete"
-  id="delete-diadiem-modal"
+  class="modal fade "
+  id="modal-delete"
   aria-labelledby="modalToggleLabel"
   tabindex="-1"
   style="display: none"
