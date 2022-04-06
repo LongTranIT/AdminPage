@@ -1,10 +1,17 @@
-
-
+const axios = require('axios');
+require('dotenv/config')
+const apiLink = process.env.RESTFULL_API;
 class KhachHangController {
 
     // [GET] /khachhang
     show(req, res) {
-       res.render('khachHang/khachHangTable');
+       axios
+            .get(apiLink + "khachhang")
+            .then(data => {
+                // handle success
+                res.render('khachHang/khachHangTable', { apiLink, khachhangs: data.data })
+            })
+            .catch(err => console.log(err))
     }
 
     // // [GET] /khachhang/:id

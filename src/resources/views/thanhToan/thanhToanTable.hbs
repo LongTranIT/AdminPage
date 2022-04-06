@@ -17,169 +17,46 @@
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-
+          {{#each thanhtoans}}
           <tr>
             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-              <strong>Trần Phi Long</strong></td>
-            <td>Núi Phú Sĩ - Hokkaido - Akihabara</td>
-            <td>10000000</td>
-            <td><span class="badge bg-label-primary me-1">Đã Duyệt</span></td>
-            <td>Long Tran</td>
+              <strong>{{this.id_khach_hang.ho_ten}}</strong>
+            </td>
+            <td>{{this.id_tour.ten}}</td>
+            <td>{{this.thanh_tien}}</td>
+            <td>
+              <span class="badge 
+              {{#if (ifEq this.trang_thai_duyet "Chưa duyệt")}}
+              bg-label-danger
+              {{else}}
+              bg-label-primary
+              {{/if}}
+               me-1">
+                {{this.trang_thai_duyet}}
+              </span>
+            </td>
+            <td>{{this.nguoi_duyet.ho_ten}}</td>
             <td>
               <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn p-0 dropdown-toggle hide-arrow"
-                  data-bs-toggle="dropdown"
-                >
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-edit"
-                    ></i>
-                    Duyệt</a>
-                  <a class="dropdown-item" href="/thanhtoan/:id"><i class="bx bx-file-find"></i>
+                  {{#if (ifEq this.trang_thai_duyet "Chưa duyệt")}}
+                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit"></i>
+                    Duyệt</a> 
+                    {{/if}}
+                  <a class="dropdown-item" href="/thanhtoan/{{this._id}}"><i class="bx bx-file-find"></i>
                     Kỳ Thanh Toán</a>
                   <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
-                    data-bs-target="#modalToggleXoaHDV"><i
-                      class="bx bx-trash me-1"
-                    ></i>
+                    data-bs-target="#modal-delete" data-id="{{this._id}}" data-name="thanh toán này"
+                    data-collection="thanhtoan"><i class="bx bx-trash me-1"></i>
                     Xóa</a>
                 </div>
               </div>
             </td>
           </tr>
-          <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-              <strong>Trần Phi Long</strong></td>
-            <td>Núi Phú Sĩ - Hokkaido - Akihabara</td>
-            <td>10000000</td>
-            <td><span class="badge bg-label-primary me-1">Đã Duyệt</span></td>
-            <td>Long Tran</td>
-            <td>
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn p-0 dropdown-toggle hide-arrow"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-edit"
-                    ></i>
-                    Duyệt</a>
-                  <a class="dropdown-item"><i class="bx bx-file-find"></i>
-                    Kỳ Thanh Toán</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-trash me-1"
-                    ></i>
-                    Xóa</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-              <strong>Trần Phi Long</strong></td>
-            <td>Núi Phú Sĩ - Hokkaido - Akihabara</td>
-            <td>10000000</td>
-            <td><span class="badge bg-label-primary me-1">Đã Duyệt</span></td>
-            <td>Long Tran</td>
-            <td>
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn p-0 dropdown-toggle hide-arrow"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-edit"
-                    ></i>
-                    Duyệt</a>
-                  <a class="dropdown-item"><i class="bx bx-file-find"></i>
-                    Kỳ Thanh Toán</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-trash me-1"
-                    ></i>
-                    Xóa</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-              <strong>Trần Phi Long</strong></td>
-            <td>Núi Phú Sĩ - Hokkaido - Akihabara</td>
-            <td>10000000</td>
-            <td><span class="badge bg-label-danger me-1">Chờ Duyệt</span></td>
-            <td></td>
-            <td>
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn p-0 dropdown-toggle hide-arrow"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-edit"
-                    ></i>
-                    Duyệt</a>
-                  <a
-                    class="dropdown-item"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalCenter"
-                  ><i class="bx bx-file-find"></i> Tour Phụ Trách</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-trash me-1"
-                    ></i>
-                    Xóa</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-              <strong>Trần Phi Long</strong></td>
-            <td>Núi Phú Sĩ - Hokkaido - Akihabara</td>
-            <td>10000000</td>
-            <td><span class="badge bg-label-info me-1">Hoàn Thành</span></td>
-            <td>Long Tran</td>
-            <td>
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn p-0 dropdown-toggle hide-arrow"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-edit"
-                    ></i>
-                    Duyệt</a>
-                  <a
-                    class="dropdown-item"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalCenter"
-                  ><i class="bx bx-file-find"></i> Tour Phụ Trách</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-trash me-1"
-                    ></i>
-                    Xóa</a>
-                </div>
-              </div>
-            </td>
-          </tr>
+          {{/each}}
 
         </tbody>
       </table>
@@ -190,46 +67,31 @@
 </div>
 
 <!-- Modal Delete-->
-<div
-  class="modal fade"
-  id="modalToggleXoaHDV"
-  aria-labelledby="modalToggleLabel"
-  tabindex="-1"
-  style="display: none"
-  aria-hidden="true"
->
+<div class="modal fade " id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalToggleLabel">
           Xác Nhận Xóa
         </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn xóa thanh toan nay không?
+        Bạn có chắc chắn muốn xóa địa điểm này không?
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-info"
-          data-bs-dismiss="modal"
-        >
-          Đóng
+        <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
+          Close
         </button>
-        <button
-          class="btn btn-danger"
-          data-bs-toggle="modal"
-          data-bs-dismiss="modal"
-        >
+        <button id="btn-delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
           Xóa
         </button>
       </div>
     </div>
   </div>
 </div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>

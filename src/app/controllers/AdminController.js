@@ -1,9 +1,17 @@
-
+const axios = require('axios');
+require('dotenv/config')
+const apiLink = process.env.RESTFULL_API;
 
 class AdminController{
     // [GET] /admin
     show(req,res){
-        res.render('account/myProfile');
+        axios
+            .get(apiLink + "admin/"+"6222c81da3ae8da2e91c8822")
+            .then(data => {
+                // handle success
+                res.render('account/myProfile', { apiLink, admin: data.data })
+            })
+            .catch(err => console.log(err))
     }
 
     // // [GET] /admin

@@ -1,14 +1,28 @@
-
+const axios = require('axios');
+require('dotenv/config')
+const apiLink = process.env.RESTFULL_API;
 
 class ThanhToanController {
     // [GET] /ThanhToan
     show(req, res) {
-        res.render('thanhToan/thanhToanTable');
+        axios
+            .get(apiLink + "thanhtoan")
+            .then(data => {
+                // handle success
+                res.render('thanhToan/thanhToanTable', { apiLink, thanhtoans: data.data })
+            })
+            .catch(err => console.log(err))
     }
 
     // [GET] /ThanhToan/:id
     detail(req, res) {
-        res.render('thanhToan/kyThanhToanTable');
+        axios
+            .get(apiLink + "thanhtoan/"+req.params.id)
+            .then(data => {
+                // handle success
+                res.render('thanhToan/kyThanhToanTable', { apiLink, thanhtoan: data.data })
+            })
+            .catch(err => console.log(err))
     }
 
     // //[POST] /ThanhToan
