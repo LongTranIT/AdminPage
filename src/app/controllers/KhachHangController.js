@@ -51,17 +51,14 @@ class KhachHangController {
     //         })
     // }
 
-    // // [DELETE] /khachhang/:id
-    // delete(req,res){
-    //     KhachHang.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete=>res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /khachhang/:id
+    delete(req,res){
+        axios
+        .delete(apiLink+'khachhang/'+req.params.id)
+        .then(data=>{
+            res.redirect('/khachhang');
+        });
+    }
 }
 
 module.exports = new KhachHangController;

@@ -68,17 +68,14 @@ class DiaDiemController {
     //         })
     // }
 
-    // // [DELETE] /diadiem/:id
-    // delete(req,res){
-    //     DiaDiem.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete=>res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /diadiem/:id
+    delete(req,res){
+        axios
+            .delete(apiLink+'diadiem/'+req.params.id)
+            .then(data=>{
+                res.redirect('/diadiem');
+            });
+    }
 }
 
 module.exports = new DiaDiemController;

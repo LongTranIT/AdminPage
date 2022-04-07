@@ -58,8 +58,9 @@
                       class="bx bx-edit"
                     ></i>
                     Gia Hạn</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i
-                      class="bx bx-trash me-1"
+                  <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal-delete" data-id="{{this._id}}" data-name="kỳ thanh toán này"
+                    data-collection="kythanhtoan"><i
+                      class="bx bx-trash me-1" 
                     ></i>
                     Xóa</a>
                 </div>
@@ -73,3 +74,33 @@
   </div>
   <!-- /Table -->
 </div>
+
+<!-- Modal Delete-->
+<div class="modal fade " id="modal-delete" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalToggleLabel">
+          Xác Nhận Xóa
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn xóa địa điểm này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button id="btn-delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal">
+          Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form action="" method="post" name="delete-form">
+</form>

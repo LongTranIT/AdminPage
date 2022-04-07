@@ -52,17 +52,14 @@ class HuongDanVienController {
     //         })
     // }
 
-    // // [DELETE] /huongdanvien/:id
-    // delete(req,res){
-    //     HuongDanVien.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete=>res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /huongdanvien/:id
+    delete(req,res){
+        axios
+        .delete(apiLink+'huongdanvien/'+req.params.id)
+        .then(data=>{
+            res.redirect('/huongdanvien');
+        });
+    }
 }
 
 module.exports = new HuongDanVienController;

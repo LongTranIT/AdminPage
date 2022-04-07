@@ -7,6 +7,6 @@ router.get('/',HuongDanVienController.show);
 // router.get('/:id',HuongDanVienController.detail);
 // router.post('/',HuongDanVienController.create);
 // router.put('/:id',HuongDanVienController.update);
-// router.delete('/:id',HuongDanVienController.delete);
+router.delete('/:id',HuongDanVienController.delete);
 
 module.exports=router;

@@ -12,6 +12,6 @@ router.get('/updateLichTrinhForm',TourController.updateLichTrinhForm);
 router.get('/:slug',TourController.detail);
 // router.post('/',TourController.create);
 // router.put('/:id',TourController.update);
-// router.delete('/:id',TourController.delete);
+router.delete('/:id',TourController.delete);
 
 module.exports=router;

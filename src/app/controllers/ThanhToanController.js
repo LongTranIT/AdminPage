@@ -17,7 +17,7 @@ class ThanhToanController {
     // [GET] /ThanhToan/:id
     detail(req, res) {
         axios
-            .get(apiLink + "thanhtoan/"+req.params.id)
+            .get(apiLink + "thanhtoan/" + req.params.id)
             .then(data => {
                 // handle success
                 res.render('thanhToan/kyThanhToanTable', { apiLink, thanhtoan: data.data })
@@ -51,17 +51,14 @@ class ThanhToanController {
     //         })
     // }
 
-    // // [DELETE] /ThanhToan/:id
-    // delete(req, res) {
-    //     ThanhToan.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete => res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /ThanhToan/:id
+    delete(req, res) {
+        axios
+            .delete(apiLink + 'thanhtoan/' + req.params.id)
+            .then(data => {
+                res.redirect('/thanhtoan');
+            });
+    }
 }
 
 module.exports = new ThanhToanController;

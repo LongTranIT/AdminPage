@@ -7,6 +7,6 @@ router.get('/',LichTrinhController.show);
 // router.get('/:id',LichTrinhController.detail);
 // router.post('/',LichTrinhController.create);
 // router.put('/:id',LichTrinhController.update);
-// router.delete('/:id',LichTrinhController.delete);
+router.delete('/:id',LichTrinhController.delete);
 
 module.exports=router;

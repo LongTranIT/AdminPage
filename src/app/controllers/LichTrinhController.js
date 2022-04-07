@@ -1,4 +1,6 @@
-
+const axios = require('axios');
+require('dotenv/config')
+const apiLink = process.env.RESTFULL_API;
 
 class LichTrinhController {
     // [GET] /LichTrinh
@@ -43,17 +45,14 @@ class LichTrinhController {
     //         })
     // }
 
-    // // [DELETE] /LichTrinh/:id
-    // delete(req, res) {
-    //     LichTrinh.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete => res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /LichTrinh/:id
+    delete(req, res) {
+        axios
+            .delete(apiLink + 'lichtrinh/' + req.params.id)
+            .then(data => {
+                res.redirect('back');
+            });
+    }
 }
 
 module.exports = new LichTrinhController;

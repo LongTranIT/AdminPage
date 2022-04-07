@@ -9,6 +9,6 @@ router.get('/updateForm/:slug',DiaDiemController.updateForm);
 router.get('/:slug',DiaDiemController.detail);
 // router.post('/',DiaDiemController.create);
 // router.put('/:id',DiaDiemController.update);
-// router.delete('/:id',DiaDiemController.delete);
+router.delete('/:id',DiaDiemController.delete);
 
 module.exports=router;

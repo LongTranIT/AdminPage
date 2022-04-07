@@ -73,17 +73,14 @@ class TourController {
   //         })
   // }
 
-  // // [DELETE] /tour/:id
-  // delete(req, res) {
-  //     Tour.findByIdAndDelete(req.params.id)
-  //         .lean()
-  //         .then(dataDelete => res.json(dataDelete))
-  //         .catch(err => {
-  //             res.json({
-  //                 message: err
-  //             });
-  //         })
-  // }
+  // [DELETE] /tour/:id
+  delete(req, res) {
+    axios
+      .delete(apiLink + 'tour/' + req.params.id)
+      .then(data => {
+        res.redirect('/tour');
+      });
+  }
 }
 
 module.exports = new TourController();

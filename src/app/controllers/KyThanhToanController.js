@@ -1,11 +1,13 @@
-
+const axios = require('axios');
+require('dotenv/config')
+const apiLink = process.env.RESTFULL_API;
 
 class KyThanhToanController {
     // [GET] /KyThanhToan
     show(req, res) {
-       
+
     }
-    
+
     // // [GET] /KyThanhToan/:id
     // detail(req, res) {
     //     KyThanhToan.find({ _id: req.params.id })
@@ -42,17 +44,14 @@ class KyThanhToanController {
     //         })
     // }
 
-    // // [DELETE] /KyThanhToan/:id
-    // delete(req,res){
-    //     KyThanhToan.findByIdAndDelete(req.params.id)
-    //         .lean()
-    //         .then(dataDelete=>res.json(dataDelete))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [DELETE] /KyThanhToan/:id
+    delete(req, res) {
+        axios
+            .delete(apiLink + 'kythanhtoan/' + req.params.id)
+            .then(data => {
+                res.redirect('back');
+            });
+    }
 }
 
 module.exports = new KyThanhToanController;

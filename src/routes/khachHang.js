@@ -7,6 +7,6 @@ router.get('/',KhachHangController.show);
 // router.get('/:id',KhachHangController.detail);
 // router.post('/',KhachHangController.create);
 // router.put('/:id',KhachHangController.update);
-// router.delete('/:id',KhachHangController.delete);
+router.delete('/:id',KhachHangController.delete);
 
 module.exports=router;
