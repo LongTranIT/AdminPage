@@ -27,11 +27,23 @@ class TourController {
 
   // [GET] /tour/addTourForm
   addTourForm(req, res) {
-    res.render("tours/addTourForm");
+    axios
+      .get(apiLink + "huongdanvien")
+      .then(data => {
+        // handle success
+        res.render('tours/addTourForm', { huongdanviens: data.data })
+      })
+      .catch(err => res.json(err))
   }
   // [GET] /tour/addLichTrinhForm
   addLichTrinhForm(req, res) {
-    res.render("tours/addLichTrinhForm");
+    axios
+      .get(apiLink + "diadiem")
+      .then(data => {
+        // handle success
+        res.render('tours/addLichTrinhForm', { diadiems: data.data ,tourSlug:req.params.slug})
+      })
+      .catch(err => res.json(err))
   }
   // [GET] /tour/updateInfoForm?_slug
   updateInfoForm(req, res) {
@@ -61,6 +73,16 @@ class TourController {
       .catch(err => res.json(err))
   }
 
+  // [POST] /tour
+  create(req, res) {
+    axios
+      .post(apiLink + "tour",req.body)
+      .then(data => {
+        // handle success
+        res.redirect('/tour');
+      })
+      .catch(err => res.json(err))
+  }
   // // [PUT] /tour/:id
   // update(req, res) {
   //     Tour.findByIdAndUpdate(req.params.id, req.body)

@@ -10,7 +10,7 @@
                       <small class="text-muted float-end">Thêm</small>
                     </div>
                     <div class="card-body">
-                      <form action="get" method="/tour">
+                      <form action="/lichtrinh/{{tourSlug}}" method="post">
 
                         <div class="mb-3">
                           <label
@@ -23,9 +23,9 @@
                               > <i class="bx bxs-location-plus"></i></span>
                             <select name="id_dia_diem" id="dia-diem" class="form-select" required>
                               <option value="">---Chọn Địa Điểm---</option>
-                              <option value="Núi">Núi Phú Sĩ</option>
-                              <option value="Hokkaido">Hokkaido</option>
-                              <option value="Akihabara">Akihabara</option>
+                              {{#each diadiems}}
+                              <option value="{{this._id}}">{{this.ten}}</option>
+                              {{/each}}
                             </select>
                           </div>
                         </div>

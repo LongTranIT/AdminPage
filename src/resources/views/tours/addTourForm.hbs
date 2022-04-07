@@ -15,13 +15,14 @@
           <small class="text-muted float-end">Thêm</small>
         </div>
         <div class="card-body">
-          <form method="get" action="/tour">
+          <form method="post" action="/tour">
             <div class="mb-3">
               <label class="form-label" for="basic-icon-default-fullname">Tên
                 Tour</label>
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon11">@</span>
                 <input
+                  required
                   name="ten"
                   type="text"
                   class="form-control"
@@ -39,6 +40,7 @@
                   class="input-group-text"
                 ><i class="bx bxs-plane-take-off"></i></span>
                 <input
+                  required
                   name="khoi_hanh"
                   class="form-control"
                   type="date"
@@ -56,6 +58,7 @@
                   class="input-group-text"
                 ><i class="bx bx-time"></i></span>
                 <input
+                  required
                   name="so_ngay"
                   class="form-control"
                   type="number"
@@ -72,6 +75,7 @@
                     class="bx bx-chair"
                   ></i></span>
                 <input
+                  required
                   name="so_cho"
                   class="form-control"
                   type="number"
@@ -87,10 +91,10 @@
                     class="bx bx-user-voice"
                   ></i></span>
                 <select name="nguoi_hd" id="defaultSelect" class="form-select">
-                  <option>Chọn Người Hướng Dẫn</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option hidden>---Chọn Người Hướng Dẫn---</option>
+                  {{#each huongdanviens}}
+                  <option value="{{this._id}}">{{this.ho_ten}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
@@ -102,6 +106,7 @@
                   ></i>VND
                 </span>
                 <input
+                  required
                   name="gia"
                   type="text"
                   class="form-control"

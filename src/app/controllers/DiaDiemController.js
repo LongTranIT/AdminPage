@@ -42,19 +42,10 @@ class DiaDiemController {
             .catch(err => console.log(err))
     }
 
-    // //[POST] /diadiem
-    // create(req, res) {
-    //     const diaDiem = new DiaDiem(req.body);
-    //     diaDiem.save()
-    //         .then(data => {
-    //             res.json(data);
-    //         })
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    //[POST] /diadiem
+    create(req, res) {
+        console.log(req.body);
+    }
 
     // // [PUT] /diadiem/:id
     // update(req,res){

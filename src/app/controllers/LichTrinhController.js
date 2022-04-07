@@ -5,7 +5,7 @@ const apiLink = process.env.RESTFULL_API;
 class LichTrinhController {
     // [GET] /LichTrinh
     show(req, res) {
-        
+
     }
 
     // // [GET] /LichTrinh/:slug
@@ -19,19 +19,29 @@ class LichTrinhController {
     //         });
     // }
 
-    // //[POST] /LichTrinh
-    // create(req, res) {
-    //     const LichTrinh = new LichTrinh(req.body);
-    //     LichTrinh.save()
-    //         .then(data => {
-    //             res.json(data);
-    //         })
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    //[POST] /LichTrinh
+    create(req, res) {
+        const tour= req.params.tourSlug;
+        axios
+            .post(apiLink + 'lichtrinh', req.body)
+            .then(data => {
+                const idLichTrinh = data.data['_id'];
+                axios
+                    .get(apiLink + "tour/" + tour)
+                    .then(data => {
+                        let tour=data.data;
+                        tour.lich_trinh.push(idLichTrinh);
+                        axios
+                            .put(apiLink+'tour/'+tour['_id'],tour)
+                            .then(result=>{
+                                res.redirect('/tour');
+                            })
+                            .catch(err => res.json(err))
+                    })
+                    .catch(err => res.json(err))
+            })
+            .catch(err => res.json(err));
+    }
 
     // // [PUT] /LichTrinh/:id
     // update(req, res) {
