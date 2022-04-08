@@ -15,7 +15,7 @@
         <a href="/tour/{{tour.slug}} {{apiLink}}">
           <div id="carouselExample{{tour._id}}" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-              {{#each this.hinh}}
+              {{#each tour.hinh}}
               <li data-bs-target="#carouselExample{{tour._id}}" data-bs-slide-to="{{@index}}" {{#unless @index}}
                 class="active" {{/unless}}></li>
               {{/each}}

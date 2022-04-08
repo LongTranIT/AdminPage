@@ -18,11 +18,11 @@ class DiaDiemController {
     // [GET] /diadiem/:slug
     detail(req, res) {
         axios
-            .get(apiLink+'diadiem/' + req.params.slug)
+            .get(apiLink + 'diadiem/' + req.params.slug)
             .then(data => {
                 // handle success
                 data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                res.render('diaDiem/diaDiemdetail', {apiLink, diadiem: data.data })
+                res.render('diaDiem/diaDiemdetail', { apiLink, diadiem: data.data })
 
             })
             .catch(err => console.log(err))
@@ -34,17 +34,24 @@ class DiaDiemController {
     // [GET] /diadiem/updateForm
     updateForm(req, res) {
         axios
-            .get(apiLink+'diadiem/' + req.params.slug)
+            .get(apiLink + 'diadiem/' + req.params.slug)
             .then(data => {
                 // handle success
-                res.render('diaDiem/updateForm', {apiLink, diadiem: data.data })
+                res.render('diaDiem/updateForm', { apiLink, diadiem: data.data })
             })
             .catch(err => console.log(err))
     }
 
     //[POST] /diadiem
     create(req, res) {
-        console.log(req.body);
+        req.body.hinh = "/img/" + req.body.hinh;
+        axios
+            .post(apiLink + "diadiem", req.body)
+            .then(data => {
+                // handle success
+                res.redirect('/diadiem');
+            })
+            .catch(err => res.json(err))
     }
 
     // // [PUT] /diadiem/:id
@@ -60,10 +67,10 @@ class DiaDiemController {
     // }
 
     // [DELETE] /diadiem/:id
-    delete(req,res){
+    delete(req, res) {
         axios
-            .delete(apiLink+'diadiem/'+req.params.id)
-            .then(data=>{
+            .delete(apiLink + 'diadiem/' + req.params.id)
+            .then(data => {
                 res.redirect('/diadiem');
             });
     }
