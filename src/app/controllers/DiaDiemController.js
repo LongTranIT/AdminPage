@@ -54,17 +54,23 @@ class DiaDiemController {
             .catch(err => res.json(err))
     }
 
-    // // [PUT] /diadiem/:id
-    // update(req,res){
-    //     DiaDiem.findByIdAndUpdate(req.params.id,req.body)
-    //         .lean()
-    //         .then(dataUpdate=>res.json(dataUpdate))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [PUT] /diadiem/:id
+    update(req,res){
+        let idDiaDiem=req.params.id;
+        if(req.body.hinh==''){
+            req.body.hinh=req.body.hinhDefault;
+        }
+        else{
+            req.body.hinh='/img/'+req.body.hinh;
+        }
+        axios
+            .put(apiLink + "diadiem/"+idDiaDiem, req.body)
+            .then(data => {
+                // handle success
+                res.redirect('/diadiem/'+data.data.slug);
+            })
+            .catch(err => res.json(err))
+    }
 
     // [DELETE] /diadiem/:id
     delete(req, res) {

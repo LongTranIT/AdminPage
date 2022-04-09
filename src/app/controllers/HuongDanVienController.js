@@ -6,7 +6,7 @@ class HuongDanVienController {
 
     // [GET] /huongdanvien
     show(req, res) {
-       axios
+        axios
             .get(apiLink + "huongdanvien")
             .then(data => {
                 // handle success
@@ -26,19 +26,26 @@ class HuongDanVienController {
     //         });
     // }
 
-    // // [POST] /huongdanvien
-    // create(req, res) {
-    //     const hdv = new HuongDanVien(req.body);
-    //     hdv.save()
-    //         .then(data => {
-    //             res.json(data);
-    //         })
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [POST] /huongdanvien
+    create(req, res) {
+        let username=req.body.username;
+        let password=req.body.password
+        axios
+            .post(apiLink + "taikhoan", {username,password})
+            .then(data => {
+                // Create huongdanvien after create taikhoan
+                console.log(data.data);
+                req.body.id_tai_khoan=data.data['_id'];
+                axios
+                    .post(apiLink + "huongdanvien", req.body)
+                    .then(data => {
+                        // handle success
+                        res.redirect('/huongdanvien');
+                    })
+                    .catch(err => res.json(err))
+            })
+            .catch(err => res.json(err))
+    }
 
     // // [PUT] /huongdanvien/:id
     // update(req,res){
@@ -53,12 +60,12 @@ class HuongDanVienController {
     // }
 
     // [DELETE] /huongdanvien/:id
-    delete(req,res){
+    delete(req, res) {
         axios
-        .delete(apiLink+'huongdanvien/'+req.params.id)
-        .then(data=>{
-            res.redirect('/huongdanvien');
-        });
+            .delete(apiLink + 'huongdanvien/' + req.params.id)
+            .then(data => {
+                res.redirect('/huongdanvien');
+            });
     }
 }
 

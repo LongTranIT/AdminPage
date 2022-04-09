@@ -134,7 +134,7 @@
 </form>
 
 <!-- Modal Add Form -->
-<div class="modal fade" id="addFormModal" tabindex="-1" style="display: none" aria-hidden="true">
+<form method="post" action="/huongdanvien" class="modal fade" id="addFormModal" tabindex="-1" style="display: none" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -151,7 +151,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                         class="bx bx-user"></i></span>
-                                <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                <input name="ho_ten" type="text" class="form-control" id="basic-icon-default-fullname"
                                     placeholder="John Doe" aria-label="John Doe"
                                     aria-describedby="basic-icon-default-fullname2">
                             </div>
@@ -160,43 +160,35 @@
                             <label class="form-label" for="username">Username</label>
                             <div class="input-group">
                                 <span class="input-group-text">@</span>
-                                <input type="text" id="username" class="form-control" placeholder="Username"
+                                <input name="username" type="text" id="username" class="form-control" placeholder="Username"
                                     aria-label="Username" aria-describedby="basic-addon11">
                             </div>
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Mật Khẩu</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="password" placeholder="············"
+                                <input name="password" type="password" class="form-control" id="password" placeholder="············"
                                     aria-describedby="basic-default-password2">
                                 <span id="basic-default-password2" class="input-group-text cursor-pointer"><i
                                         class="bx bx-hide"></i></span>
                             </div>
                         </div>
-                        <div class="mb-3 form-password-toggle">
-                            <label class="form-label" for="password-again">Nhập Lại Mật Khẩu</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="password-again"
-                                    placeholder="············" aria-describedby="basic-default-password2">
-                                <span id="basic-default-password2" class="input-group-text cursor-pointer"><i
-                                        class="bx bx-hide"></i></span>
-                            </div>
-                        </div>
+                        
                         <div class="mb-3">
                             <label class="form-label d-block">Giới Tính</label>
                             <div class="form-check form-check-inline mt-3">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
+                                <input class="form-check-input" type="radio" name="gioi_tinh" id="inlineRadio1"
+                                    value="Nam">
                                 <label class="form-check-label" for="inlineRadio1">Nam</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
+                                <input class="form-check-input" type="radio" name="gioi_tinh" id="inlineRadio2"
+                                    value="Nữ">
                                 <label class="form-check-label" for="inlineRadio2">Nữ</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                    value="option3">
+                                <input class="form-check-input" type="radio" name="gioi_tinh" id="inlineRadio3"
+                                    value="Khác">
                                 <label class="form-check-label" for="inlineRadio3">Khác</label>
                             </div>
                         </div>
@@ -205,7 +197,7 @@
                             <label class="form-label" for="basic-icon-default-email">Email</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                <input type="text" id="basic-icon-default-email" class="form-control"
+                                <input name="email" type="text" id="basic-icon-default-email" class="form-control"
                                     placeholder="john.doe" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2">
                                 <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
@@ -217,7 +209,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-phone"></i></span>
-                                <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
+                                <input name="sdt" type="text" id="basic-icon-default-phone" class="form-control phone-mask"
                                     placeholder="658 799 8941" aria-label="658 799 8941"
                                     aria-describedby="basic-icon-default-phone2">
                             </div>
@@ -227,7 +219,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class='bx bx-current-location'></i></span>
-                                <input id="basic-icon-default-message" class="form-control"
+                                <input name="dia_chi" id="basic-icon-default-message" class="form-control"
                                     placeholder="Ninh Kiều, Cần Thơ"></input>
                             </div>
                         </div>
@@ -244,4 +236,4 @@
             </div>
         </div>
     </div>
-</div>
+</form>

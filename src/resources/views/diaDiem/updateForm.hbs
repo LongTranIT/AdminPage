@@ -14,7 +14,7 @@
                       <small class="text-muted float-end">Chỉnh Sửa</small>
                     </div>
                     <div class="card-body">
-                      <form method="get" action="/diadiem/{{diadiem._id}}">
+                      <form method="post" action="/diadiem/{{diadiem._id}}?_method=put">
                         <div class="card-body">
                           <img
                             src="{{apiLink}}{{diadiem.hinh}}"
@@ -23,6 +23,7 @@
                             width="800"
                             id="uploadedAvatar"
                           />
+                          <input type="text" hidden name="hinhDefault" value="{{diadiem.hinh}}">
                           <br>
                           <div class="button-wrapper">
                             <label
@@ -35,6 +36,7 @@
                               >
                               <i class="bx bx-upload d-block d-sm-none"></i>
                               <input
+                                name="hinh"
                                 type="file"
                                 id="upload"
                                 class="account-file-input"
