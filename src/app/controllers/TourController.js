@@ -41,7 +41,7 @@ class TourController {
       .get(apiLink + "diadiem")
       .then(data => {
         // handle success
-        res.render('tours/addLichTrinhForm', { diadiems: data.data ,tourSlug:req.params.slug})
+        res.render('tours/addLichTrinhForm', { diadiems: data.data, tourSlug: req.params.slug })
       })
       .catch(err => res.json(err))
   }
@@ -61,6 +61,7 @@ class TourController {
   }
   // [GET] /tour/updateLichTrinhForm?_id
   updateLichTrinhForm(req, res) {
+    let tourSlug = req.query['_tour'];
     Promise.all([
       axios
         .get(apiLink + "lichtrinh/" + req.query['_id']),
@@ -68,7 +69,7 @@ class TourController {
         .get(apiLink + "diadiem")
     ])
       .then(([data, diadiems]) => {
-        res.render('tours/updateLichTrinhForm', { lichtrinh: data.data, diadiems: diadiems.data })
+        res.render('tours/updateLichTrinhForm', { lichtrinh: data.data, diadiems: diadiems.data, tourSlug })
       })
       .catch(err => res.json(err))
   }
@@ -76,24 +77,23 @@ class TourController {
   // [POST] /tour
   create(req, res) {
     axios
-      .post(apiLink + "tour",req.body)
+      .post(apiLink + "tour", req.body)
       .then(data => {
         // handle success
         res.redirect('/tour');
       })
       .catch(err => res.json(err))
   }
-  // // [PUT] /tour/:id
-  // update(req, res) {
-  //     Tour.findByIdAndUpdate(req.params.id, req.body)
-  //         .lean()
-  //         .then(dataUpdate => res.json(dataUpdate))
-  //         .catch(err => {
-  //             res.json({
-  //                 message: err
-  //             });
-  //         })
-  // }
+  // [PATCH] /tour/:id
+  update(req, res) {
+    axios
+      .patch(apiLink + "tour/"+req.params.id, req.body)
+      .then(data => {
+        // handle success
+        res.redirect('/tour/'+req.query['_tour']);
+      })
+      .catch(err => res.json(err))
+  }
 
   // [DELETE] /tour/:id
   delete(req, res) {

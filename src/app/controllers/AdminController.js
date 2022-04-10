@@ -1,12 +1,13 @@
 const axios = require('axios');
 require('dotenv/config')
 const apiLink = process.env.RESTFULL_API;
+const adminId='6222c81da3ae8da2e91c8822';
 
 class AdminController{
     // [GET] /admin
     show(req,res){
         axios
-            .get(apiLink + "admin/"+"6222c81da3ae8da2e91c8822")
+            .get(apiLink + "admin/"+adminId)
             .then(data => {
                 // handle success
                 res.render('account/myProfile', { apiLink, admin: data.data })
@@ -39,16 +40,9 @@ class AdminController{
     //         })
     // }
 
-    // // [PUT] /admin/:id
+    // [PUT] /admin/:id
     // update(req,res){
-    //     Admin.findByIdAndUpdate(req.params.id,req.body)
-    //         .lean()
-    //         .then(dataUpdate=>res.json(dataUpdate))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
+    //     console.log(req.param.id);
     // }
 
     // // [DELETE] /admin/:id

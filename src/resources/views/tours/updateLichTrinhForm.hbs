@@ -13,7 +13,7 @@
           <small class="text-muted float-end">Chỉnh Sửa</small>
         </div>
         <div class="card-body">
-          <form action="get" method="/tour">
+          <form method="post" action="/lichtrinh/{{lichtrinh._id}}?_tour={{tourSlug}}&_method=PUT">
 
             <div class="mb-3">
               <label class="form-label" for="dia-diem">Địa Điểm</label>

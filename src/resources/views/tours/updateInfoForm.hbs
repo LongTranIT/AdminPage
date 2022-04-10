@@ -15,7 +15,7 @@
           <small class="text-muted float-end">Chỉnh Sửa</small>
         </div>
         <div class="card-body">
-          <form method="get" action="/tour">
+          <form method="post" action="/tour/{{tour._id}}?_tour={{tour.slug}}&_method=PATCH">
             <div class="mb-3">
               <label class="form-label" for="basic-icon-default-fullname">Tên
                 Tour</label>

@@ -43,17 +43,17 @@ class LichTrinhController {
             .catch(err => res.json(err));
     }
 
-    // // [PUT] /LichTrinh/:id
-    // update(req, res) {
-    //     LichTrinh.findByIdAndUpdate(req.params.id, req.body)
-    //         .lean()
-    //         .then(dataUpdate => res.json(dataUpdate))
-    //         .catch(err => {
-    //             res.json({
-    //                 message: err
-    //             });
-    //         })
-    // }
+    // [PUT] /LichTrinh/:id
+    update(req, res) {
+        let idLichTrinh=req.params.id;
+        axios
+            .put(apiLink + "lichtrinh/"+idLichTrinh, req.body)
+            .then(data => {
+                // handle success
+                res.redirect('/tour/'+req.query['_tour']);
+            })
+            .catch(err => res.json(err))
+    }
 
     // [DELETE] /LichTrinh/:id
     delete(req, res) {
