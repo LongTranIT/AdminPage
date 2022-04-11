@@ -19,8 +19,19 @@ class ThanhToanController {
         axios
             .get(apiLink + "thanhtoan/" + req.params.id)
             .then(data => {
+                let thanhToan=data.data;
                 // handle success
-                res.render('thanhToan/kyThanhToanTable', { apiLink, thanhtoan: data.data })
+                if (req.query['_action'] === 'duyet') {
+                    thanhToan.trang_thai_duyet='ĐÃ DUYỆT';
+                    axios
+                        .put(apiLink + "thanhtoan/"+ req.params.id,thanhToan)
+                        .then(data => {
+                            res.redirect('back');
+                        })
+                        .catch(err => console.log(err))
+                }
+                else
+                    res.render('thanhToan/kyThanhToanTable', { apiLink, thanhtoan: data.data })
             })
             .catch(err => console.log(err))
     }
