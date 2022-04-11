@@ -6,7 +6,7 @@ const AdminController=require('../app/controllers/AdminController');
 router.get('/',AdminController.show);
 // router.get('/:id',AdminController.detail);
 // router.post('/',AdminController.create);
-// router.put('/:id',AdminController.update);
+router.put('/:id',AdminController.update);
 // router.delete('/:id',AdminController.delete);
 
 module.exports=router;
