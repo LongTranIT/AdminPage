@@ -14,6 +14,14 @@ class AdminController {
             })
             .catch(err => console.log(err))
     }
+    // [GET] /admin/notifications
+    notifications(req, res) {
+        res.render('account/notifications');
+    }
+    // [GET] /admin/connections
+    connections(req, res) {
+        res.render('account/connections');
+    }
 
     // // [GET] /admin
     // detail(req,res){
