@@ -82,6 +82,19 @@
                           </div>
                         </div>
 
+                        <div class="mb-3">
+              <label class="form-label" for="tag">Tag</label>
+              <div class="input-group input-group-merge">
+                <span id="tag2" class="input-group-text"><i class='bx bxs-tag'></i></span>
+                <select name="tag" id="tag" class="form-select" required>
+                  {{#each tags}}
+                  <option value="" hidden>--Tag--</option>
+                  <option value="{{this}}">{{this}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+
                         <div>
                           <label
                             for="exampleFormControlTextarea1"

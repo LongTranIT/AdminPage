@@ -53,8 +53,9 @@
     <!-- Card-item LichTrinh -->
     <div class="col-md-6 col-lg-4 mb-3">
       <div class="card">
-        <div class="card-header text-danger">
-          Lịch Trình Địa Điểm {{sum @index 1}}
+        <div class="card-header text-danger" style="display: flex; justify-content: space-between;">
+          <div>Lịch Trình Địa Điểm {{sum @index 1}}</div>
+          <div class="text-primary"><i class='bx bxs-tag'></i>{{lichtrinh.id_dia_diem.tag}}</div>
         </div>
         <div class="card-body">
           <p class="card-text">

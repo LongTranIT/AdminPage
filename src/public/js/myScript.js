@@ -46,13 +46,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const updateInfoAdminForm=document.querySelector('#update-info-admin');
-console.log(updateInfoAdminForm);
-updateInfoAdminForm.addEventListener('submit',(e)=>{
-    const password=document.querySelector('#password');
-    const passwordAgain=document.querySelector('#password-again');
-
-    if(password.value!==passwordAgain.value){
-        alert('Nhập lại mật khẩu và mật khẩu không trùng nhau!!!');
-        e.preventDefault();
-    }
-})
+if(updateInfoAdminForm!==null){
+    updateInfoAdminForm.addEventListener('submit',(e)=>{
+        const password=document.querySelector('#password');
+        const passwordAgain=document.querySelector('#password-again');
+    
+        if(password.value!==passwordAgain.value){
+            alert('Nhập lại mật khẩu và mật khẩu không trùng nhau!!!');
+            e.preventDefault();
+        }
+    })
+}

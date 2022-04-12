@@ -1,6 +1,17 @@
 const axios = require('axios');
 require('dotenv/config')
 const apiLink = process.env.RESTFULL_API;
+const tags=[
+    'Sakura',
+    'Mountain',
+    'Temple',
+    'City',
+    'Contryside',
+    'Catsle',
+    'Snow',
+    'Onsen',
+    'Beach',
+]
 class DiaDiemController {
 
     // [GET] /diadiem
@@ -22,14 +33,14 @@ class DiaDiemController {
             .then(data => {
                 // handle success
                 data.data.mo_ta = data.data.mo_ta.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                res.render('diaDiem/diaDiemdetail', { apiLink, diadiem: data.data })
+                res.render('diaDiem/diaDiemdetail', { apiLink, diadiem: data.data });
 
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
     // [GET] /diadiem/addForm
     addForm(req, res) {
-        res.render('diaDiem/addForm')
+        res.render('diaDiem/addForm',{tags});
     }
     // [GET] /diadiem/updateForm
     updateForm(req, res) {
@@ -37,9 +48,9 @@ class DiaDiemController {
             .get(apiLink + 'diadiem/' + req.params.slug)
             .then(data => {
                 // handle success
-                res.render('diaDiem/updateForm', { apiLink, diadiem: data.data })
+                res.render('diaDiem/updateForm', { apiLink, diadiem: data.data ,tags});
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 
     //[POST] /diadiem
@@ -51,7 +62,7 @@ class DiaDiemController {
                 // handle success
                 res.redirect('/diadiem');
             })
-            .catch(err => res.json(err))
+            .catch(err => res.json(err));
     }
 
     // [PUT] /diadiem/:id
@@ -69,7 +80,7 @@ class DiaDiemController {
                 // handle success
                 res.redirect('/diadiem/'+data.data.slug);
             })
-            .catch(err => res.json(err))
+            .catch(err => res.json(err));
     }
 
     // [DELETE] /diadiem/:id
