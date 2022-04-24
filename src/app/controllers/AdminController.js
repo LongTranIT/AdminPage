@@ -22,6 +22,28 @@ class AdminController {
     connections(req, res) {
         res.render('account/connections');
     }
+    // [GET] /admin/login
+    login(req, res) {
+        res.render('account/login');
+    }
+    // [POST] /admin/login
+    handleLogin(req, res) {
+        console.log(req.body);
+        axios
+            .get(apiLink + "admin")
+            .then(data => {
+                let admins=data.data;
+                let admin=admins.find(admin=>admin.id_tai_khoan.username===req.body.username&&
+                    admin.id_tai_khoan.password===req.body.password);
+                if(admin){
+                    res.redirect('/tour');
+                }
+                else{
+                    res.redirect('/admin/login');
+                }
+            })
+            .catch(err => console.log(err))
+    }
 
     // // [GET] /admin
     // detail(req,res){
@@ -54,10 +76,10 @@ class AdminController {
             .put(apiLink + "admin/" + adminId, req.body)
             .then(data => {
                 axios
-                    .put(apiLink + "taikhoan/" + req.body.id_tai_khoan, 
-                        { 
+                    .put(apiLink + "taikhoan/" + req.body.id_tai_khoan,
+                        {
                             username: req.body.username,
-                            password: req.body.password 
+                            password: req.body.password
                         })
                     .then(data => {
                         res.redirect('/admin');
