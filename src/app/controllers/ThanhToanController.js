@@ -1,6 +1,7 @@
 const axios = require('axios');
 require('dotenv/config')
 const apiLink = process.env.RESTFULL_API;
+const adminId = '6222c81da3ae8da2e91c8822';
 
 class ThanhToanController {
     // [GET] /ThanhToan
@@ -23,6 +24,7 @@ class ThanhToanController {
                 // handle success
                 if (req.query['_action'] === 'duyet') {
                     thanhToan.trang_thai_duyet='ĐÃ DUYỆT';
+                    thanhToan.nguoi_duyet=adminId;
                     axios
                         .put(apiLink + "thanhtoan/"+ req.params.id,thanhToan)
                         .then(data => {
