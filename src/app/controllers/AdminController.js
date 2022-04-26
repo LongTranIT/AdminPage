@@ -1,5 +1,5 @@
 const axios = require('axios');
-require('dotenv/config')
+require('dotenv/config');
 const apiLink = process.env.RESTFULL_API;
 const adminId = '6222c81da3ae8da2e91c8822';
 
