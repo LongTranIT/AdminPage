@@ -28,7 +28,6 @@ class AdminController {
     }
     // [POST] /admin/login
     handleLogin(req, res) {
-        console.log(req.body);
         axios
             .get(apiLink + "admin")
             .then(data => {

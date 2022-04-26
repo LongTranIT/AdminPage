@@ -3,7 +3,7 @@
 class TaiKhoanController {
     // [GET] /taikhoan
     show(req, res) {
-        res.render('home')
+        res.render('home');
     }
 
     // // [GET] /taikhoan/:username
