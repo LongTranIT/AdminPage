@@ -32,7 +32,11 @@
           </p>
           <p class="card-text">
             <i class="bx bx-chair"></i>
-            {{tour.khach_hang.length}}/{{tour.so_cho}}
+            {{#if tour.du_khach.length}}
+              {{tour.du_khach.length}}/{{tour.so_cho}}
+            {{else}}
+              0/{{tour.so_cho}}
+            {{/if}}
           </p>
           <p class="card-text">
             <i class="bx bx-user-voice"></i>
@@ -101,7 +105,7 @@
         </h5>
         <div class="card-body ps ps--active-y" id="vertical-example">
 
-          {{#each tour.khach_hang}}
+          {{#each tour.du_khach}}
           <p>{{sum @index 1}}: <a href="#">{{this.ho_ten}} </a></p>
           {{/each}}
 
