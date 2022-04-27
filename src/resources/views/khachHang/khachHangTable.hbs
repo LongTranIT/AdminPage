@@ -11,7 +11,7 @@
             <th class="text-primary">Họ Tên</th>
             <th class="text-primary">Số Điện Thoại</th>
             <th class="text-primary">Email</th>
-            <th class="text-primary">Số Tour Tham Gia</th>
+            <th class="text-primary">Số Tour Đã Đặt</th>
             <th class="text-primary">Hành Động</th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
             </td>
             <td>{{this.sdt}}</td>
             <td>{{this.email}}</td>
-            <td><span class="badge bg-label-primary me-1">{{this.tour_tg.length}}</span></td>
+            <td><span class="badge bg-label-primary me-1">{{this.tours_da_dat.length}}</span></td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -31,7 +31,7 @@
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalTourTG{{@index}}"><i
-                      class="bx bx-file-find"></i> Tour Tham Gia</a>
+                      class="bx bx-file-find"></i> Tour Đã Đặt</a>
 
                   <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete"data-id="{{this._id}}" data-name="{{this.ho_ten}}"
                                         data-collection="khachhang"><i
@@ -40,7 +40,7 @@
               </div>
             </td>
           </tr>
-          <!-- Modal Tour Tham Gia-->
+          <!-- Modal Tour Đã Đặt-->
           <div class="modal fade" id="modalTourTG{{@index}}" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -49,13 +49,13 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div class="card overflow-hidden mb-4" style="height: 330px">
+                  <div class="card overflow-hiden mb-4" >
                     <h5 class="card-header text-danger">
                       <i class="bx bxs-user-check"></i>
-                      Danh Sách Tour Tham Gia
+                      Danh Sách Tour Đã Đặt
                     </h5>
                     <div class="card-body ps ps--active-y" id="vertical-example">
-                      {{#each this.tour_tg}}
+                      {{#each this.tours_da_dat}}
                       <p>{{sum @index 1}}: <a href="/tour/{{this.slug}}">{{this.ten}} </a></p>
                       {{/each}}
                       <div class="ps__rail-x" style="left: 0px; bottom: 0px">
