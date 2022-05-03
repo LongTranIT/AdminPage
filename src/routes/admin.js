@@ -6,8 +6,6 @@ const AdminController=require('../app/controllers/AdminController');
 router.get('/',AdminController.show);
 router.get('/notifications',AdminController.notifications);
 router.get('/connections',AdminController.connections);
-router.get('/login',AdminController.login);
-router.post('/login',AdminController.handleLogin);
 // router.get('/:id',AdminController.detail);
 // router.post('/',AdminController.create);
 router.put('/:id',AdminController.update);

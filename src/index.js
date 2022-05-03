@@ -1,6 +1,7 @@
 const express=require('express');
 const route=require('./routes');
 const methodOverride = require('method-override');
+const session = require('express-session');
 const app=express();
  
 const port= process.env.PORT || 3000;
@@ -28,6 +29,13 @@ app.use(express.urlencoded({ extended: true }));//middleware
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
+
+// Session 
+app.use(session({
+    secret: 'mySecretKey',
+    resave: true,
+    saveUninitialized: false
+}));
 
 //Init Router
 route(app);
