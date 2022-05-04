@@ -6,9 +6,7 @@
   <div class="row">
     <div class="col-xl">
       <div class="card mb-4">
-        <div
-          class="card-header d-flex justify-content-between align-items-center"
-        >
+        <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="mb-0">{{lichtrinh.id_dia_diem.ten}}</h5>
           <small class="text-muted float-end">Chỉnh Sửa</small>
         </div>
@@ -20,12 +18,7 @@
               <div class="input-group input-group-merge">
                 <span class="input-group-text">
                   <i class="bx bxs-location-plus"></i></span>
-                <select
-                  name="id_dia_diem"
-                  id="dia-diem"
-                  class="form-select"
-                  required
-                >
+                <select name="id_dia_diem" id="dia-diem" class="form-select" required>
                   <option value="{{lichtrinh.id_dia_diem._id}}" hidden>{{lichtrinh.id_dia_diem.ten}}</option>
                   {{#each diadiems}}
                   <option value="{{this._id}}">{{this.ten}}</option>
@@ -34,38 +27,31 @@
               </div>
             </div>
 
-            
+            <div class="mb-3">
+              <label class="form-label" for="ngay_o">Ngày ở</label>
+              <div class="input-group input-group-merge">
+                <span class="input-group-text"><i class="bx bx-time"></i></span>
+                <input type="text" class="form-control" placeholder="" id="ngay_o" name="ngay_o" value="{{lichtrinh.ngay_0}}" />
+              </div>
+            </div>
+
+
             <div class="mb-3">
               <label class="form-label" for="dich-vu">Dịch Vụ</label>
               <div class="input-group input-group-merge">
-                <span class="input-group-text"><i
-                    class="bx bx-hotel"
-                  ></i></span>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Khách Sạn"
-                  id="dich-vu"
-                  name="dich_vu"
-                  value="{{lichtrinh.dich_vu}}"
-                />
+                <span class="input-group-text"><i class="bx bx-hotel"></i></span>
+                <input type="text" class="form-control" placeholder="Khách Sạn" id="dich-vu" name="dich_vu"
+                  value="{{lichtrinh.dich_vu}}" />
               </div>
             </div>
 
             <div class="mb-3">
               <label class="form-label" for="su-co">Sự Cố</label>
               <div class="input-group input-group-merge">
-                <span id="su-co2" class="input-group-text"><i
-                    class="bx bxs-radiation"
-                  ></i></span>
-                <textarea
-                  name="su_co"
-                  id="su-co"
-                  class="form-control"
-                  placeholder="Thiên tai, chiến tranh, dịch bệnh,..."
-                  aria-label="Thiên tai, chiến tranh, dịch bệnh,..."
-                  aria-describedby="su-co2"
-                >{{lichtrinh.su_co}}</textarea>
+                <span id="su-co2" class="input-group-text"><i class="bx bxs-radiation"></i></span>
+                <textarea name="su_co" id="su-co" class="form-control"
+                  placeholder="Thiên tai, chiến tranh, dịch bệnh,..." aria-label="Thiên tai, chiến tranh, dịch bệnh,..."
+                  aria-describedby="su-co2">{{lichtrinh.su_co}}</textarea>
               </div>
             </div>
 
@@ -74,12 +60,7 @@
               <div class="input-group input-group-merge">
                 <span class="input-group-text">
                   <i class="bx bx-edit"></i></span>
-                <select
-                  name="trang_thai"
-                  id="defaultSelect"
-                  class="form-select"
-                  required
-                >
+                <select name="trang_thai" id="defaultSelect" class="form-select" required>
                   <option value="{{lichtrinh.trang_thai}}" hidden>{{lichtrinh.trang_thai}}</option>
                   <option value="Chưa Hoàn Thành">Chưa Hoàn Thành</option>
                   <option value="Hoàn Thành">Hoàn Thành</option>
