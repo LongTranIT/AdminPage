@@ -34,7 +34,7 @@ class LichTrinhController {
                         axios
                             .put(apiLink+'tour/'+tour['_id'],tour)
                             .then(result=>{
-                                res.redirect('/tour');
+                                res.redirect('/tour/'+tour.slug);
                             })
                             .catch(err => res.json(err))
                     })
