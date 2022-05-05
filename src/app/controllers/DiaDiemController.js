@@ -7,7 +7,7 @@ const tags=[
     'Temple',
     'City',
     'Contryside',
-    'Catsle',
+    'Castle',
     'Snow',
     'Onsen',
     'Beach',
